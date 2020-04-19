@@ -1,8 +1,13 @@
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser');
+
 const PORT = 3000;
 
-app.get('/', function(req,res) {
+app.use(bodyParser.json());
+
+app.post('/', function(req,res) {
+  console.log('req.body :', req.body);
   res.send('Hello World!');
 })
 
