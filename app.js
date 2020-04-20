@@ -43,6 +43,17 @@ app.get('/users/:id', function(req, res) {
 })
 
 
+app.delete('/users/:id', function(req, res) {
+  const id = req.params.id
+  if(id >= 0 && id < users.length) {
+    res.json(users[id]);
+    users.splice(id,1);
+  } else {
+    return res.status(500).send('SERVER ERROR');
+  }
+})
+
+
 app.listen(PORT, function() {
   console.log('App running on port ', PORT);
 })
